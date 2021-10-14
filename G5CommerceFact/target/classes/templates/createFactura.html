@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<title>Crear Producto</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Tienda Genérica</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" th:href="@{/usuarios}"
+						target="myFrame">Usuarios</a>
+				</li>
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" th:href="@{/clientes}"
+						target="myFrame">Clientes</a>
+				</li>
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" th:href="@{/proveedores}"
+						target="myFrame">Proveedores</a>
+				</li>
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" th:href="@{/productos}"
+						target="myFrame">Productos</a>
+				</li>
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" th:href="@{/factura}"
+						target="myFrame">Ventas</a>
+				</li>
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" href="#"
+						target="myFrame">Reportes</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+
+<script>
+
+
+		function calculate() {
+			var myBox1p1 = document.getElementById('cantidad_producto1').value;
+			var myBox2p1 = document.getElementById('valor_producto1').value;
+			var resultp1 = document.getElementById('total_producto1');
+			var myResultp1 = myBox1p1 * myBox2p1;
+			document.getElementById('total_producto1').value = myResultp1;
+
+			var myBox1p2 = document.getElementById('cantidad_producto2').value;
+			var myBox2p2 = document.getElementById('valor_producto2').value;
+			var resultp2 = document.getElementById('total_producto2');
+			var myResultp2 = myBox1p2 * myBox2p2;
+			document.getElementById('total_producto2').value = myResultp2;
+
+			var myBox1p3 = document.getElementById('cantidad_producto3').value;
+			var myBox2p3 = document.getElementById('valor_producto3').value;
+			var resultp3 = document.getElementById('total_producto3');
+			var myResultp3 = myBox1p3 * myBox2p3;
+			document.getElementById('total_producto3').value = myResultp3;
+		}
+
+		function sumatotal() {
+			var myBox1SBP1 = document.getElementById('total_producto1').value;
+			var myBox1SBP2 = document.getElementById('total_producto2').value;
+			var myBox1SBP3 = document.getElementById('total_producto3').value;
+			var resultTV = document.getElementById('total_factura');
+			var myResulTV = parseInt(myBox1SBP1) + parseInt(myBox1SBP2) + parseInt(myBox1SBP3);
+			document.getElementById('total_factura').value = myResulTV;
+			//document.getElementById('spTotal').innerHTML = myResulTV;
+
+		}
+	</script>
+
+
+<h2>Productos a Facturar </h2>
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Código</th>
+							<th>Buscar</th>
+							<th>Nombre Producto</th>
+							<th>IVA</th>
+							<th>Valor Unitario</th>
+							<th>Cantidad</th>
+							<th>Total</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="codigo_producto1">
+								</div>
+							</td>
+							<td><button type="submit" class="btn btn-success">Buscar<i class="fa fa-check"></i>
+								</button></td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="nombre_producto1">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" style="width : 80px" id="iva_producto1">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="number" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="valor_producto1"
+										oninput="calculate();">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="number" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="cantidad_producto1"
+										oninput="calculate();">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="number" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="total_producto1"
+										oninput="calculate();">
+								</div>
+							</td>
+							<td>
+								<form th:action="@{/cargar}" method="post">
+									<button type="submit" class="btn btn-danger">Eliminar</button>
+								</form>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="codigo_producto2">
+								</div>
+							</td>
+							<td><button type="submit" class="btn btn-success">Buscar<i class="fa fa-check"></i>
+								</button></td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="nombre_producto2">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" style="width : 80px" id="iva_producto2">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="valor_producto2"
+										oninput="calculate();">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="cantidad_producto2"
+										oninput="calculate();">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="total_producto2"
+										oninput="calculate();" onchange="sumatotal();">
+								</div>
+							</td>
+							<td>
+								<form th:action="@{/cargar}" method="post">
+									<button type="submit" class="btn btn-danger">Eliminar</button>
+								</form>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="codigo_producto3">
+								</div>
+							</td>
+							<td><button type="submit" class="btn btn-success">Buscar<i class="fa fa-check"></i>
+								</button></td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="nombre_producto3">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" style="width : 80px" id="iva_producto3">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="valor_producto3"
+										oninput="calculate();">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="cantidad_producto3"
+										oninput="calculate();">
+								</div>
+							</td>
+							<td>
+								<div class="input-group input-group-sm mb-3">
+
+									<input type="text" class="form-control" aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm" id="total_producto3"
+										oninput="calculate();" onchange="sumatotal();">
+								</div>
+							</td>
+							<td>
+								<form th:action="@{/cargar}" method="post">
+									<button type="submit" class="btn btn-danger">Eliminar</button>
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<h1>total factura</h1>
+				<input type="text" class="form-control" aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-sm" id="total_factura" oninput="sumatotal();">
+
+
+
+			</div>
+	</div>
+
+
+
+</body>
+</html>

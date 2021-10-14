@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<title>Editar Clientes</title>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Tienda Genérica</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" th:href="@{/usuarios}"
+						target="myFrame">Usuarios</a>
+				</li>
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" th:href="@{/clientes}"
+						target="myFrame">Clientes</a>
+				</li>
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" th:href="@{/proveedores}"
+						target="myFrame">Proveedores</a>
+				</li>
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" th:href="@{/productos}"
+						target="myFrame">Productos</a>
+				</li>
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" th:href="@{/factura}"
+						target="myFrame">Ventas</a>
+				</li>
+				<li class="nav-item">
+					<a style="margin-left: 10px; border:none;" class="btn btn-outline-light" href="#"
+						target="myFrame">Reportes</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+		<h1>Editar Cliente</h1>
+
+		<form th:action="@{/clientes/savecli}" method="post">
+
+
+			<input type="text" name="cedula_cliente" th:value="${clientese.cedula_cliente}" readonly="">
+				
+				<div class="mb-3">
+				<label for="formGroupExampleInput2" class="form-label">Direccion Cliente</label>
+				<input type="text" class="form-control" id="formGroupExampleInput2" name="direccion_cliente"
+					th:value="${clientese.direccion_cliente}">
+				</div>
+
+				<div class="mb-3">
+					<label for="formGroupExampleInput3" class="form-label">Correo Electronico Cliente</label>
+					<input type="text" class="form-control" id="formGroupExampleInput3" name="email_cliente"
+						th:value="${clientese.email_cliente}">
+				</div>
+
+				<div class="mb-3">
+					<label for="formGroupExampleInput4" class="form-label">Nombre Cliente</label>
+					<input type="text" class="form-control" id="formGroupExampleInput4" name="nombre_cliente"
+						th:value="${clientese.nombre_cliente}">
+				</div>
+
+				<div class="mb-3">
+					<label for="formGroupExampleInput5" class="form-label">Telefono Cliente</label>
+					<input type="text" class="form-control" id="formGroupExampleInput5" name="telefono_cliente"
+						th:value="${clientese.telefono_cliente}">
+				</div>
+
+				<button type="submit" class="btn btn-success">Editar</button>
+		</form>
+
+	</div>
+
+</body>
+
+</html>
